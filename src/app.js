@@ -15,6 +15,7 @@ const port = process.env.PORT || 3000;
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
+const name = "Ananya George";
 
 // Setup handlebars engine and views location
 app.set("view engine", "hbs");
@@ -27,14 +28,14 @@ app.use(express.static(publicDirectoryPath));
 app.get("", (req, res) => {
   res.render("index", {
     title: "Weather App",
-    name: "Ananya Elizabeth George",
+    name,
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About Page",
-    name: "Ananya Elizabeth George",
+    name,
     description: "About me",
   });
 });
@@ -42,7 +43,7 @@ app.get("/about", (req, res) => {
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help!",
-    name: "Ananya Elizabeth George",
+    name,
     description: "This is the help page",
   });
 });
@@ -87,7 +88,7 @@ app.get("/products", (req, res) => {
 
 app.get("/help/*", (req, res) => {
   res.render("not-found", {
-    name: "Ananya Elizabeth George",
+    name,
     title: "Help Not Found",
     errorMsg: "Help article not found.",
   });
@@ -95,7 +96,7 @@ app.get("/help/*", (req, res) => {
 
 app.get("*", (req, res) => {
   res.render("not-found", {
-    name: "Ananya Elizabeth George",
+    name,
     title: "Page Not Found",
     errorMsg: "Page not found.",
   });

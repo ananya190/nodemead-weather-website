@@ -15,14 +15,17 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback("Error with coordinates, please try again", undefined);
     } else {
-      const { weather_descriptions, temperature, feelslike } = body.current;
+      const { weather_descriptions, temperature, feelslike, humidity } =
+        body.current;
       const response_string =
         weather_descriptions[0] +
         ". It is currently " +
         temperature +
         " degrees out. It feels like " +
         feelslike +
-        " degrees out.";
+        " degrees out. The humidity is " +
+        humidity +
+        "%.";
       callback(undefined, response_string);
     }
   });
